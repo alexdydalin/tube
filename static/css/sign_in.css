@@ -1,0 +1,112 @@
+.header {
+    width: 100%;
+    height: 105px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.header__content {
+    width: 1440px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 135px;
+}
+
+
+.header__text {
+    font-family: 'Orbitron', fantasy;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 38px;
+    color: #000000;
+}
+
+.header__text a{
+    text-decoration: none;
+    color: #000000;}
+
+.logo {
+    padding-right: 34px;
+}
+
+.logo img {
+    vertical-align: bottom;
+    width: 60px;
+}
+
+.menu {
+    margin-left: 500px;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    overflow-x: hidden;
+    /*overflow: hidden;*/
+    background: linear-gradient(136.31deg, #FFFFFF -5.69%, #0047FF 100%);
+}
+.main__content{
+    flex: 1;
+    position: relative;
+    width: 1440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0 135px;
+    /*overflow: hidden;*/
+}
+.main::-webkit-scrollbar {
+    width: 7px;
+}
+
+.main::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #FFFFFF;
+}
+
+.main::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    background-color: #6590FF;
+}
+
+.header__text {
+    font-family: 'Orbitron', fantasy;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 38px;
+    color: #000000;
+}
+
+.enrance_form{
+    display: flex;
+    margin: 50px auto 40px auto;
+    width: 521px;
+    height: 620px;
+    left: 459px;
+    top: 142px;
+    justify-content: center;
+    text-decoration: none;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 25px;
+}
+
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    background: linear-gradient(136.31deg, #FFFFFF -5.69%, #0047FF 100%);
+}

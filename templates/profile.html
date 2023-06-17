@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% block title %}Профиль{% endblock %}
+{% block head %}
+    <link href="../static/css/otherpeople.css" rel="stylesheet">
+    <link href="../static/css/base.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../static/img/logo.png" type="image/x-icon" sizes="180"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Roboto+Condensed:wght@400;700&display=swap"
+          rel="stylesheet">
+{% endblock %}
+
+
+
+
+{% block content %}
+
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="flash">
+            <ul class=flashes>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div> 
+    {% endif %}
+{% endwith %} <br>
+
+
+
+{% if user.login == current_user.login %}
+        
+<h1 style="margin: 130px 0 25px 290px; justify-content: space-between;">Профиль
+    <a href=" {{ url_for('logout') }}" 
+        style="color: black;float: right;font-size: 26px;text-decoration: none; margin-right: 200px;">выйти из профиля
+    </a>
+</h1>
+        
+    
+    <div class="inf_cont">
+        <label class="input-file">
+            <form method=post enctype=multipart/form-data >
+                <input type="file" name="avatar"  id="avatar" accept="image/jpeg">
+                <img src="/{{ user.avatar_link }}" width="244" style="object-fit: cover;">
+                <p style="font-size: 15px; text-align: center; margin-left: 8px;">Вы можете изменить аватарку. <br> Изображение только в формате .jpeg*</p>
+                
+                <input class="upload_video_butom" type=submit value=Сохранить>
+
+            </form>
+        </label>
+        
+
+        <div class="information">
+            {% if current_user.admin == True %}
+                <p style="color: green;">Вы являетесь администратором</p>
+            {% endif %}
+            <p>Имя: {{ user.username }}</p> 
+            <p>Логин: {{ user.login }} </p> 
+            <p>Почта: {{ user.email }}</p>  
+        </div>
+        
+        
+    </div>
+        
+    {% else %} 
+    <!--       oher user profile       -->
+
+    <div style="display: inline;">
+        <h1 style="margin: 130px 0 25px 290px; ">Профиль</h1>
+        </div>
+    </div>
+    
+    <div class="inf_cont">
+
+        <label class="input-file">
+            
+               
+                <img src="/{{ user.avatar_link }}" width="244" style="object-fit: cover;">
+                
+
+            
+        </label>
+
+        
+        
+
+        <div class="information">
+            
+            <p>Имя: {{ user.username }}</p> 
+            <p>Почта: {{ user.email }}</p>  
+
+        </div>
+        
+        
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {% endif %}
+    <div class="cont" style="box-sizing: border-box; ">
+
+
+    {% if user.login == current_user.login %}
+        {% if not videos %}
+            <p style="margin-bottom: 40px; font-size: 25px;">У вас пока нет видеороликов =(</p>
+            <p style="margin-bottom: 40px; font-size: 25px;">Скорее загружайте!</p>
+        {% else %}
+            <p style="margin-bottom: 40px; font-size: 25px;">Ваши видеоролики:</p>
+        {% endif %}
+    {% else %}
+        {% if not videos %}
+            <p style="margin-bottom: 40px; font-size: 25px;">У пользователя {{ user.username }} пока нет видеороликов</p>
+        {% else %}
+            <p style="margin-bottom: 40px; font-size: 25px;">Видеоролики пользователя {{ user.username }}:</p>
+        {% endif %}
+    {% endif %}
+
+    <div style="display: flex;  flex-wrap: wrap; " name="videos" style="overflow: hidden;">
+    {% for file in videos %}
+
+        <a href={{ url_for('watch', 
+                        filename_uuid=file.filename_uuid,
+                        video_link=file.video_link) 
+    }} style="text-decoration: none;" >
+    <div style="overflow:hidden; margin-bottom: 40px; margin-right: 30px; text-decoration: none; flex-wrap: wrap; width: 400px" >
+            <video preload="metadata" id="example" preload="auto" 
+            width="400" height="225" 
+            muted poster="/{{ file.poster_link }}"
+                loop onmouseover="this.play();" 
+                onmouseout="this.pause();" 
+                style="background-color: rgba(0, 0, 0, 0); ">
+                <source src="/{{ file.video_link }}" type='video/mp4' />
+            </video>
+            <p style="color: black; text-decoration: none; overflow: hidden;text-overflow: ellipsis; ">{{ file.title }}</p>
+            <p style="color: black; text-decoration: none; overflow: hidden;text-overflow: ellipsis; ">{{ file.descriprion }}</p>
+            <p style="word-wrap: break-word; color: black; text-decoration: inherit;overflow: hidden; text-overflow: ellipsis;">Дата загрузки: {{ file.upload_on }}</p>
+        </div></a>
+    {% endfor %}
+</div></div>
+
+
+
+
+{% endblock %}

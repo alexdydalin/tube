@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Error{% endblock %}
+{% block head %}
+    <link href="../static/css/404.css" rel="stylesheet">
+    <link href="../static/css/base.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../static/img/logo.png" type="image/x-icon" sizes="180"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Roboto+Condensed:wght@400;700&display=swap"
+          rel="stylesheet">
+{% endblock %}
+
+
+
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+
+
+    
+      
+    
+
+ 
+    <div class="main__content">
+      <div class="err">
+        <img src="../static/img/error.png" width="427" alt="planet">
+
+
+      {% if not messages %}
+        <p>Упс, что-то пошло не так,
+          мы уже работаем над устранением неполадок   </p>
+      {% else %}
+<div class="flash" style="margin: 70px 0 90px 0px;">
+        <ul class=flashes >
+          {% for message in messages %}
+              <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        </div>
+
+{% endif %}
+        <div class="next">
+          <a class="enter_next" href="{{url_for('main')}}">Перейти на главную</a>
+        </div>
+      </div>
+    </div>
+
+
+
+    
+
+
+    
+{% endwith %}
+
+
+
+
+
+{% endblock %}

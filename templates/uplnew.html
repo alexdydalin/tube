@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    <link href="../static/css/adder.css" rel="stylesheet">
+    <link href="./static/css/base.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../static/img/logo.png" type="image/x-icon" sizes="180"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Roboto+Condensed:wght@400;700&display=swap"
+          rel="stylesheet">
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<div class="main" >
+        <div class="add_form" style="overflow:hidden;"><div class="flash">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div> 
+            <div class="pole_add">
+
+    <form method=post enctype=multipart/form-data >
+        <div style="margin-left: 200px;margin-bottom: 80px;margin-top: 10px;">Загрузка видео</div>
+
+
+        
+        <div>Введите заголовок:</div> <input type="text" name="title" id="title">
+        <div>Введите описание:</div> <textarea id="description" type="text" name="description"></textarea><br> 
+        
+        
+        <label class="input-file">
+                                
+            <input type="file" name="file"  id="video-input" accept="video/*" >
+            <span><p>Выберите видео</p></span>
+            <p style="font-size: 12px;margin-left: 10px;">Максимальный размер файла 200Мб*</p>
+
+        </label>
+
+        <label class="input-file" style="margin-left: 60px;">                  
+            <input type="file" name="poster"  id="poster" accept="image/jpeg">
+            <span><p>Выберите превью</p></span>
+            <p style="font-size: 12px; ">Изображение только в формате .jpeg*</p>
+        </label>
+
+
+        <dialog>
+                <p>Упс!</p>
+                <p id="error">К сожалению, размер файла превышает допустимый предел и не может быть добавлен.</p>
+                <p><button id="close">Закрыть</button></p>
+        </dialog>
+
+
+        <input class="upload_video_butom" type=submit value=Опубликовать>
+    </form>
+</div>
+</div>
+
+    
+
+{% endblock %}

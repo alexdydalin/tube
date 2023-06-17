@@ -1,0 +1,88 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Личный кабинет</title>
+    <link rel="shortcut icon" href="../static/img/logo.png" type="image/x-icon" sizes="180"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="../static/css/entrance.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <nav class="header__content">
+            <div class="logo">
+                <img src="../static/img/logo.png" alt="логотип">
+            </div>
+            <div class="header__text">
+                <div><a>IritTube</a> </div>
+            </div>
+        </nav>
+    </header>
+    <main class="main">
+        <div class="main__content">
+
+
+        <div class="enrance_form">
+            <form action="#" method="post">
+                <div class="enter_name">
+                    <h1>Войти в аккаунт</h1>
+                    <div class="flash">
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul class=flashes>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                        {% endwith %}
+                    </div> 
+                    <div class="pole_enter" style="margin-top: 4px">
+                    <div class="input-field" style="margin-top: 0px">
+                        <label for="login">Ваш логин</label><br>
+                        <input type="login" placeholder="Введите логин" name="login" id="login" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="password">Пароль</label><br>
+                        <input type="password" placeholder="Введите пароль" name="password" id="password"required>
+                    </div>
+                    <div>
+                        <p class="discript_enter">Если у вас еще нет аккаунта</p>
+                        <a class="registr" href="sign-up" > создайте его</a>
+                    </div>
+
+                    <div class="enter_akk">
+                    <button class="enter_akk_butom" type="submit" style="border-radius: 20px; width: 300px; height: 65px; font-style: normal;font-weight: 200;font-size: 25px;
+                    border: 2px solid #0047FF;color: #000000;font-family: 'Montserrat Alternates', sans-serif;cursor: pointer;">войти</button>
+
+
+                    <div style="margin-top: 70px; margin-left: 15px;">
+                        <input type="checkbox" name="remainme" id="remainme" style="margin-left: 15px;margin-right: 15px;margin-top: 40px;top:50px;">Запомнить меня
+                    </div>
+
+            </div>
+    </form>
+
+
+            </div>
+
+
+
+                 
+
+
+        </div>
+
+    </main>
+</div>
+<script src="../static/js/login-page.js"></script>
+</body>
+</html>

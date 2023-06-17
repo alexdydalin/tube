@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Профиль{% endblock %}
+{% block head %}
+    <link href="../static/css/views.css" rel="stylesheet">
+    <link href="../static/css/base.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../static/img/logo.png" type="image/x-icon" sizes="180"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Roboto+Condensed:wght@400;700&display=swap"
+          rel="stylesheet">
+{% endblock %}
+
+
+
+{% block content %}
+
+
+    <div style="width: 1250px;height: 800px; " >
+        <video id="example" preload="auto" width="1200" height="825" autoplay controls="controls" style="margin: 80px 0 0 80px;">
+            <source src="/{{ file.video_link }}" type='video/mp4' />
+        </video>
+
+
+
+        <div style="margin: 60px 0 0 80px;">
+        <p style="word-wrap: break-word; margin:20px 0 0 40px; font-size: 25px; ">
+        {{ file.title }}</p>
+
+        <p style="word-wrap: break-word; margin:20px 0 0 40px; font-size: 25px;">
+        {{ file.description }}</p>
+
+        <p style="margin:20px 0 10px 40px; font-size: 25px; padding-bottom: 20px;">
+        Дата загрузки: {{ file.upload_on }}</p>
+
+
+{% if current_user.login == uploader.login or current_user.admin == True or
+                    current_user.login == file.user_login %}
+<button class="del_vid" action="/video/{{ file.filename_uuid }}/delete">
+    <a href="/video/{{ file.filename_uuid }}/delete" style="font-size:25px;text-decoration:none;">
+        Удалить видео</a>
+</button>
+{% endif %}
+
+        
+
+    <div class="upl_user">
+            <a href=" {{ url_for('profile', login = uploader.login) }} "> 
+            <img class="upl_avatar" src="/{{ uploader.avatar_link }}" style="object-fit: cover; float: left; ">
+            <p>{{ uploader.username }}</p>
+        </a>
+    </div>
+
+
+        <form action="" name="print_comment" method="post">
+            <textarea placeholder="Напишите ваш комментарий..." name="comment" id="comment" type="text" name="description"></textarea>
+            <input class="upload_comment_butom" type=submit value=Опубликовать>
+        </form>
+
+
+
+        <div class="comments">
+        {% for comment in comments %}
+        
+            <div class="comment" name="comment">
+                 <p>
+                {% if comment.user_login == 'admin' %}
+                    <p>admin </p>
+                    <p style="font-size: 15px; color: grey">{{ comment.upload_on_date }} в {{ comment.upload_on_time }}</p>
+                {% else %}
+                    <a href=" {{ url_for('profile', login = comment.user_login) }} " style="text-decoration: none;
+                    color: black;">{{ comment.user_login }} </a>
+                    <p style="font-size: 15px; color: grey">{{ comment.upload_on_date }} в {{ comment.upload_on_time }}<p>
+                {% endif %}</p>
+                <p>{{ comment.comment }}</p>
+                {% if current_user.login == uploader.login or current_user.admin == True or
+                    current_user.login == comment.user_login %}
+                <div class="del_com" style="margin: 0 0 30px 0;">
+                    <a href="/comment/{{ file.filename_uuid }}/{{comment.user_login}}/delete" style="font-size:25px;text-decoration:none; color: red; margin: 0 0 20px 0;">
+                    Удалить комментарий</a>
+                    </div>
+                {% endif %}
+            </div>
+        
+        {% endfor %}
+        </div>
+
+
+
+        </div>
+    </div>
+                        
+{% endblock %}

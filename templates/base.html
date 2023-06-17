@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+
+    {% endblock %}
+</head>
+<body>
+
+    <header class="header" >
+        <nav class="header__content">
+            <div class="logo">
+                <img src="../static/img/white_logo.png" alt="логотип">
+            </div>
+            <div class="header__text">
+                <div><a href=" {{ url_for('main') }} ">IritTube</a></div>
+            </div>
+            <div class="right_menu">
+                <a href=" {{ url_for('upload') }}"><img src="../static/img/Plus.png" width="40" style="object-fit: cover;"> </a>
+                <a href=" {{ url_for('profile', login = current_user.login) }} "> <img class="avatar" src="/{{ current_user.avatar_link }}" width="60" style="object-fit: cover;"></a>
+            </div>
+        </nav>
+    </header>
+
+    {% block content %} {% endblock %}
+
+</div>
+</div>
+
+
+</body>
+</html>

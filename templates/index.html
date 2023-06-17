@@ -1,0 +1,63 @@
+<!doctype html>
+<html class="no-js" lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>IritTube</title>
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon" sizes="180"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Roboto+Condensed:wght@400;700&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <nav class="header__content">
+            <div class="logo">
+                <img src="img/white_logo.png" alt="логотип">
+            </div>
+            <div class="header__text">
+                <div><a href="index.html">IritTube</a></div>
+            </div>
+            <div class="right_menu">
+                <a href="adder.html"><img src="img/Plus.png" width="40"> </a>
+                <a href=" {{ url_for('profile', username = current_user.username) }}> <img class="avatar" src="img/avatar.png" width="60"></a>
+            </div>
+        </nav>
+    </header>
+    <main class="main">
+        <div class="main__content">
+            <div class="container_videos">
+                <div class="video-items">
+                    {% for file in videos %}
+        <a href={{ url_for('watch',
+        filename_uuid=file.filename_uuid,
+        video_link=file.video_link)
+    }}>
+    <div style="border-style:solid; max-width: 400px;max-height: 314px;overflow:hidden;" >
+            <video id="example" preload="auto"
+            width="400" height="225"
+            muted poster={{ file.poster_link }}
+                loop onmouseover="this.play();"
+                onmouseout="this.pause();"
+                style="background-color: rgba(0, 0, 0, 0);">
+                <source src="/{{ file.video_link }}" type='video/mp4' />
+            </video>
+            <p style="word-wrap: break-word; ">Link: {{ file.video_link }}</p>
+            <p style="word-wrap: break-word; ">Заголовок: {{ file.title }}</p>
+            <p>Дата загрузки: {{ file.upload_on }}</p>
+        </div></a>
+    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

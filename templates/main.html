@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Главная{% endblock %}
+{% block head %}
+    <link href="./static/css/main.css" rel="stylesheet">
+    <link href="./static/css/base.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../static/img/logo.png" type="image/x-icon" sizes="180"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Roboto+Condensed:wght@400;700&display=swap"
+          rel="stylesheet">
+{% endblock %}
+
+
+
+
+{% block content %}
+    <div class="cont" style="box-sizing: border-box; ">
+    <h1 style="margin: 140px 0 50px 30px">Главная</h1>
+    
+
+    <div style="display: flex;  flex-wrap: wrap; " name="videous_fiuld" style="overflow: hidden;">
+    {% for file in videos %}
+        <a href={{ url_for('watch', filename_uuid=file.filename_uuid  ) }}
+                        style="text-decoration: none;" >
+    <div style="overflow:hidden; margin-bottom: 40px; margin-right: 30px; text-decoration: none; flex-wrap: wrap; width: 400px" >
+            <video id="example" preload="auto" 
+            width="400" height="225" 
+            muted poster={{ file.poster_link }}
+                loop onmouseover="this.play();" 
+                onmouseout="this.pause();" 
+                style="background-color: rgba(0, 0, 0, 0); ">
+                <source src="/{{ file.video_link }}" type='video/mp4' />
+            </video>
+            <p style="word-wrap: break-word; color: black; text-decoration: inherit;white-space: nowrap; margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis; ">{{ file.title }}</p>
+            <p style="word-wrap: break-word; color: black; text-decoration: inherit; overflow: hidden; white-space: nowrap; margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;">Дата загрузки: {{ file.upload_on }}</p>
+        </div></a>
+    {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

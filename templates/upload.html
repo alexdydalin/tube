@@ -1,0 +1,51 @@
+
+{% extends 'base.html' %}
+
+<title> {{ title }} </title>
+
+{% block content %}
+
+
+<body>
+
+<form action="#" method="post">
+        <div>Введите заголовок:</div> <input type="text" name="title">
+        <div>Введите описание:</div> <textarea  type="text" name="description"></textarea><br>
+        <input type="submit" name="submit" value="Загрузить" />
+</form>
+
+    <form method="post" action="https://storage.yandexcloud.net/tube" enctype="multipart/form-data" type='video/mp4'>
+
+
+        <input type="hidden" name="key" value="videos/${{ filenameuuid }}.mp4" /><br />
+        <input type="hidden" name="acl" value="public-read" />
+        <input type="hidden" name="policy" value="eyJleHBpcmF0aW9uIjogIjMxNjQtMDMtMjhUMDU6NDg6MjFaIiwgImNvbmRpdGlvbnMiOiBbeyJhY2wiOiAicHVibGljLXJlYWQifSwgWyJzdGFydHMtd2l0aCIsICIka2V5IiwgInZpZGVvcy8iXSwgeyJidWNrZXQiOiAidHViZSJ9LCBbInN0YXJ0cy13aXRoIiwgIiRrZXkiLCAidmlkZW9zLyJdLCB7IngtYW16LWFsZ29yaXRobSI6ICJBV1M0LUhNQUMtU0hBMjU2In0sIHsieC1hbXotY3JlZGVudGlhbCI6ICJZQ0FKRUZKM005XzAtMUh0d1R6RHg5dm1NLzIwMjMwNjExL3J1LWNlbnRyYWwxL3MzL2F3czRfcmVxdWVzdCJ9LCB7IngtYW16LWRhdGUiOiAiMjAyMzA2MTFUMTM0ODIxWiJ9XX0=" />
+        <input type="hidden" name="X-Amz-Date" value="20230611T134821Z" />
+        <input type="hidden" name="X-Amz-Algorithm" value="AWS4-HMAC-SHA256" />
+        <input type="hidden" name="X-Amz-Credential" value="YCAJEFJ3M9_0-1HtwTzDx9vmM/20230611/ru-central1/s3/aws4_request" />
+        <input type="hidden" name="X-Amz-Signature" value="bc01e957b9bde18496d13bb559fcf47fedb96e265f9019dfdf9071a0acffcafc" />
+
+        Файл для загрузки:
+        <input type="file"   name="file" /> <br/>
+        <input type="submit" name="submit" value="Загрузить" />
+    </form>
+
+
+    {% for file in files %}
+        <video id="example_video_1" controls preload="auto" width="800" height="450">
+            <source src="{{ file.link }}" type='video/mp4' />
+        </video>
+    {% endfor %}
+
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+{% endblock %}

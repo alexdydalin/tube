@@ -1,0 +1,255 @@
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.body::-webkit-scrollbar {
+    width: 7px;
+}
+
+.body::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #FFFFFF;
+}
+
+.body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    background-color: #6590FF;
+}
+
+
+
+.right_menu {
+    position: absolute;
+    left: 80.49%;
+    right: 16.74%;
+    top: 20%;
+    bottom: 93.26%;
+    display: flex;
+    align-items: flex-start;
+    width: 225px;
+    height: 60px;
+    padding-right: 41px;
+}
+
+.right_menu a {
+    height: 60px;
+    margin-right: 41px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    padding-right: 34px;
+}
+
+.logo img {
+    vertical-align: bottom;
+    width: 50px;
+}
+
+.avatar{
+    height: 60px;
+    border-radius: 50%;
+}
+
+.menu {
+    margin-left: 500px;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #FFFFFF;
+}
+.main__content{
+    flex: 1;
+    position: relative;
+    width: 1440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0 135px;
+    /*overflow: hidden;*/
+}
+
+
+.sidenav {
+    height: 100%;
+    width: 132px;
+    position: fixed;
+    z-index: 1;
+    top: 105px;
+    left: 0;
+    background: linear-gradient(1.19deg, #D7E2FF 0%, #4F80FF 92.38%);
+    overflow-x: hidden;
+    padding-top: 62px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #000000;
+    display: block;
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.sidenav p{
+    width: 106px;
+    height: 10px;
+    font-family: 'Montserrat', serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    leading-trim: both;
+    text-edge: cap;
+    text-align: center;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+
+.container_videos {
+    width: 100%;
+    max-height: 732px;
+    margin: 50px auto 20px 57px;
+}
+
+.main::-webkit-scrollbar {
+    width: 7px;
+}
+
+.main::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #6590FF;
+}
+
+.main::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    background-color: #ffffff;
+}
+
+
+.video-items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 10px;
+}
+
+.video-item {
+    width: 314px;
+    height: 276px;
+    max-width: 384px;
+    text-align: center;
+    margin-right: 15px;
+    margin-bottom:  40px;
+}
+
+.video-item-img {
+    vertical-align: bottom;
+    width: 314px;
+    height: 240px;
+}
+
+.video--image:hover video  {
+    transform: scale(1.01);
+}
+
+.video-item-title {
+    font-family: 'Montserrat', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.02em;
+    margin: 15px 0 17px 15px;
+    padding: 0 5px;
+    text-align: left;
+    height: 24px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.video-item-title a{
+    text-decoration: none;
+    color: #030305;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.video-item-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+}
+
+.video-item-point {
+    width: 196px;
+    height: 92px;
+    margin: 0 15px;
+    text-align: left;
+}
+
+.video-item-point div{
+    margin-bottom: 5px;
+}
+
+.video-item-point img{
+    margin-right: 6px;
+}
+
+.video-item-info > div:nth-child(2) {
+    text-align: right;
+    width: 77px;
+}
+
+.cont{
+    margin-bottom: 20px;
+    margin-top: 40px;
+    margin-left: 80px;
+    margin-right: 80px;
+
+}
+
+
+p {
+    text-decoration: none;"
+}
+
+
+.videous_fiuld p{
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.videous_fiuld:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(180deg, transparent, #c8ad90 50%);
+}
